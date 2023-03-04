@@ -1,4 +1,4 @@
-ANONS is a pentesting framework specifically for beginners,it can be used to crack zip files,scan targets with nmap,create an HTTP server etc. 
+#ANONS is a pentesting framework specifically for beginners,it can be used to crack zip files,scan targets with nmap,create an HTTP server etc. 
 #Installation
 
 git clone https://gitHub.com/khoihackerlor/anons
