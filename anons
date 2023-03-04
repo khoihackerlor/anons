@@ -1,0 +1,149 @@
+#!/usr/bin/env python 
+  
+ import os 
+ import sys 
+ import socket 
+ import time 
+ import subprocess 
+ import requests 
+  
+ def banner(): 
+     clear() 
+
+     print("                      Author:onion") 
+     print("                    Maintainer:onion") 
+     print("                           Version:1.0") 
+     print("               Github@:http://github.com/khoihackerlor") 
+     print("                  email: darkweddeepwed@gmail.com\n") 
+  
+ def netcheck(): 
+     try: 
+        requests.get("http://github.com") 
+     except ConnectionError as e: 
+        print(e) 
+        exit() 
+  
+ def clear(): 
+     os.system("clear") 
+  
+ def back(): 
+     ask = input("Do you want to go back to menu or exit(y to go back to menu and n to exit): ") 
+     if ask == "y": 
+        main() 
+     elif ask == "n": 
+        exit() 
+     else: 
+        print("Unknown option selected,exiting....") 
+  
+ def checkSudo(): 
+     while os.getuid() != 0: 
+        print("[-] anons must be run as Root or with sudo,exiting...") 
+        sys.exit() 
+  
+     while os.name != 'posix': 
+        print("anons must be run under a *NIX like OS") 
+        exit() 
+  
+ def startJohn(): 
+        print("where is the path to the zip file you want to crack") 
+        print("You can choose that with /path/file.zip") 
+        zippath=input("JTR ~# ") 
+        os.system("zip2john >/tmp/hash %s" % zippath) 
+        clear() 
+        print("[*] hash extracted for the given zip file is given below") 
+        time.sleep(2) 
+        os.system("cat /tmp/hash") 
+        print("[*] Password cracking will start now") 
+        os.system("john /tmp/hash") 
+        print("[*] Process completed, Exiting...") 
+        back() 
+  
+ def contribs(): 
+    clear() 
+
+    print("                  Author:onion") 
+    print("                Maintainer:onion") 
+    print("                      Version:1.0") 
+    print("          Github@:http://github.com/khoihackerlor") 
+    print("              email: darkweddeepwed@gmail.com") 
+    time.sleep(2) 
+    back() 
+ def main(): 
+    banner() 
+    checkSudo() 
+    print() 
+    print("    }--------------{+} Coded By Phoenix {+}---------------{") 
+    print(" }------------{+}  GitHub.com/khoihackerlor/anons{+}---------{") 
+    print("    0)--Http Server") 
+    print("    1)--NMAP") 
+    print("    2)--John The Ripper Zip File Cracking") 
+    print("    3)--Host2ip") 
+    print("    4)--Cupp Wordlist Creator") 
+    print("    5)--Wifite Wifi Hacking Tool") 
+    print("    6)--Commix ExploitaTion Tool") 
+    print("    7)--Port Scanner(Limited)") 
+    print("    8)-CONTRIBUTORS") 
+    print("    99)--EXIT\n") 
+  
+    choice = input("[anons@anons ~]# ") 
+    if choice == "0": 
+       server() 
+    if choice == "1": 
+       nmapScan() 
+    elif choice == "2": 
+       john() 
+    elif choice == "3": 
+       host2ip() 
+    elif choice == "4": 
+       cupp() 
+    elif choice == "5": 
+       wifite() 
+    elif choice == "6": 
+       commix() 
+    elif choice == "7": 
+       portscan() 
+    elif choice == "8": 
+       contribs() 
+    elif choice == "99": 
+       exit() 
+    while choice != "1" "2" "3" "4" "5" "6" "7" "99": 
+         print("[Invalid or No option selected,Please Retry...") 
+         break 
+  
+ def portscan(): 
+     print("") 
+     back() 
+ def server(): 
+     print("Python HTTP server") 
+     port = input("Enter the port number: ") 
+ #    print("Serving HTTP server on port %s" % port) 
+     os.system("python3 /usr/bin/server %s" % port) 
+     back() 
+  
+  
+ def nmapScan(): 
+     try: 
+        print("Checking if Nmap is installed") 
+        if os.path.isfile("/usr/bin/nmap"): 
+           print("nmap is installed,continuing...") 
+           time.sleep(1) 
+            
+        else: 
+           print("nmap is not installed,Installing....") 
+           os.system("apt install nmap -y") 
+           time.sleep(1) 
+        clear() 
+        nmapLogo=( ''' 
+                88b 88 8b    d8    db    88""Yb 
+                88Yb88 88b  d88   dPYb   88__dP 
+                88 Y88 88YbdP88  dP__Yb  88""" 
+                88  Y8 88 YY 88 dP""""Yb 88 
+        ''') 
+        prompt="[onion@anons] ~# " 
+        print(nmapLogo) 
+        target=input("What's your target IPadderss: ") 
+        print("   Nmap scan for: %s\n" % target) 
+        print("   {1}--Simple Scan [-sV]") 
+        print("   {2}--Port Scan [-Pn]") 
+        print("   {3}--Operating System Detection [-A]\n") 
+        print("
